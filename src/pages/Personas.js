@@ -124,7 +124,7 @@ export default function Personas() {
 		"At this point, Indecisive Ian is beginning to worry…he is holding up a line of hungry students after all.",
 		"In a rush to make a decision, Ian quickly settles on Aha (his favorite drink from Brown quarantine semester)",
 		"To his surprise, Ian discovers that there are more flavors to choose from after selecting a drink!",
-		"Frustratingly, Ian can’t seem to select the lime watermelon flavor, as the touch screen wont recognize his presses…",
+		"Frustratingly, Ian can’t seem to select the lime watermelon flavor, as the touch screen wont recognize his presses…after three attempts, he finally gets his drink.",
 		"After walking away with his drink, Indecisive Ian wishes he had more time to explore the different flavors and choose a better drink option.",
 	]
 
