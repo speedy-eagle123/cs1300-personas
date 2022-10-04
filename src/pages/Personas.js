@@ -301,6 +301,7 @@ export default function Personas() {
 							))}
 						</ImageList> */}
 						<Carousel
+							height={'60vh'}
 							animation='slide'
 							autoPlay={false}
 							navButtonsAlwaysVisible={true}
@@ -327,7 +328,7 @@ export default function Personas() {
 						</Carousel>
 					</div>
 				</div>
-			</PartSection>
-		</div>
+			</PartSection >
+		</div >
 	)
 }
