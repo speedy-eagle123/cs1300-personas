@@ -2,8 +2,7 @@
     width: 90%;
     display: flex;
     flex-direction: column;
-    padding-left: 2vw;
-    padding-right: 2vw;
+
     margin-left: 5%;
     padding-bottom: 40px;
 }
@@ -11,6 +10,7 @@
 #titleWrapper {
     width: 100%;
     display: flex;
+    padding-left: 2vw;
 }
 
 #body {
@@ -18,4 +18,6 @@
     justify-content: flex-start;
     display: flex;
     flex-direction: column;
+
+
 }

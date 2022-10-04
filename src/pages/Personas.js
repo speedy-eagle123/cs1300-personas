@@ -7,6 +7,14 @@ import ian from '../assets/persona-ian.png'
 import harry from '../assets/persona-harry.png'
 import andrews from '../assets/persona-andrews.png'
 import Carousel from 'react-material-ui-carousel'
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import Typography from '@mui/material/Typography';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
+import ImageListItemBar from '@mui/material/ImageListItemBar';
 
 import SB1 from '../assets/personas-1.png'
 import SB2 from '../assets/personas-2.png'
@@ -107,6 +115,10 @@ export default function Personas() {
 		SB1, SB2, SB3, SB4, SB5, SB6, SB7, SB8, SB9, SB10
 	]
 
+	const itemData = [
+		'caption'
+	]
+
 	return (
 		<div id={styles.container}>
 			<AssignmentSummary
@@ -114,116 +126,192 @@ export default function Personas() {
 			/>
 
 			<PartSection title='Part 1'>
-				<div id={styles.titleWrapper} style={{ flexDirection: 'row', alignItems: 'center' }}>
-					<h2 style={{ color: colors.text }}>Interface:</h2>
-					<h3 style={{ color: colors.text, fontWeight: '500', marginLeft: 20 }}>Drink Machine in Andrews Dining Hall</h3>
-				</div>
-				<div>
-					<img src={andrews} class={styles.image} />
-				</div>
-
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text }}>Sketch:</h2>
-				</div>
-				<div>
-					<img src={sketch} class={styles.image} />
-					<h4 style={{ color: colors.text }}>The interface on the drink machine at Andrews dining hall has two main functions: allow the user to view different drink options (displaying which ones are in stock) and to select a drink to dispense. The physical interface is a touch screen which displays multiple drink options. After selecting a drink option, the interface displays different flavor options that are available for the selected beverage.</h4>
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper} style={{ flexDirection: 'column' }}>
+						<h2 style={{ color: colors.text }}>Interface:</h2>
+						<h3 style={{ color: colors.text, fontWeight: '600', marginTop: 0 }}>Drink Machine in Andrews Dining Hall</h3>
+					</div>
+					<div>
+						<img src={andrews} class={styles.image} />
+					</div>
 				</div>
 
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text }}>Questions:</h2>
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text }}>Sketch:</h2>
+					</div>
+					<div>
+						<img src={sketch} class={styles.image} />
+						<h4 style={{ color: colors.text }}>
+							The interface on the drink machine at Andrews dining hall has two main functions: allow the user to view different drink options (displaying which ones are in stock) and to select a drink to dispense. The physical interface is a touch screen which displays multiple drink options. After selecting a drink option, the interface displays different flavor options that are available for the selected beverage. The problem that this interface is trying to solve is a lack of physical space for many drink flavors. Since this machine utilizes a touch screen, rather than a manual dispense lever, the dining hall can offer a wide variety of drinks.</h4>
+					</div>
 				</div>
-				<div style={{
-					textAlign: 'left'
-				}}>
-					<ol>
-						{questions.map((q, idx) => (
-							<li style={{ color: colors.text }}>{q}</li>
-						))}
-					</ol>
+
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text }}>Questions:</h2>
+					</div>
+					<div style={{
+						textAlign: 'left'
+					}}>
+						<ol>
+							{questions.map((q, idx) => (
+								<li style={{ color: colors.text }}>{q}</li>
+							))}
+						</ol>
+					</div>
 				</div>
 			</PartSection>
 
 			<PartSection title='Part 2'>
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text, marginBottom: 0 }}>Observations:</h2>
-				</div>
-				<div>
-					{observations.map((o, idx) => (
-						<div style={{ textAlign: 'left' }}>
-							<h3 style={{ color: colors.text, marginBottom: 0 }}>{`Person ${idx + 1}:`}</h3>
-							<ul>
-								{o.map((item) => (
-									<li style={{ color: colors.text }}>{item}</li>
-								))}
-							</ul>
-						</div>
-					))}
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text, marginBottom: 0 }}>Observations:</h2>
+					</div>
+					<div style={{ textAlign: 'left' }}>
+						<h4 style={{ color: colors.text }}>The three users I observed interacting with the soda machine each had different habits. The first person did not waste any time looking for their drink and immediately dispensed their selection. The second person tapped through multiple beverages before settling on one. It is important to note that some of the options they selected had grayed out flavors. The last person again tapped on multiple beverages, but none of their selected flavors were sold out. Most importantly, two out of the three users spent a few seconds looking around the screen before selecting their first choice (their face looked a bit puzzled while doing so). </h4>
+					</div>
+					<div>
+						{observations.map((o, idx) => (
+							<div style={{ borderRadius: 5, overflow: 'hidden', marginBottom: 15 }}>
+								<Accordion>
+									<AccordionSummary
+										expandIcon={<ExpandMoreIcon style={{ color: colors.text }} />}
+										aria-controls="panel1a-content"
+										id="panel1a-header"
+										sx={{
+											backgroundColor: colors.background,
+										}}
+									>
+										<Typography style={{ color: colors.text, fontWeight: 'bold' }}>{`Person ${idx + 1}:`}</Typography>
+									</AccordionSummary>
+									<AccordionDetails
+										sx={{
+											backgroundColor: colors.background,
+										}}
+									>
+										<div style={{ textAlign: 'left' }}>
+											<ul>
+												{o.map((item) => (
+													<li style={{ color: colors.text }}>{item}</li>
+												))}
+											</ul>
+										</div>
+									</AccordionDetails>
+								</Accordion>
+							</div>
+						))}
+					</div>
 				</div>
 
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text, marginBottom: 0 }}>Responses:</h2>
-				</div>
-				<div>
-					{questions.map((o, idx) => (
-						<div style={{ textAlign: 'left' }}>
-							<h3 style={{ color: colors.text, marginBottom: 0 }}>{o}</h3>
-							<ul>
-								{responses[idx].map((item) => (
-									<li style={{ color: colors.text }}>{item}</li>
-								))}
-							</ul>
-						</div>
-					))}
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text, marginBottom: 20 }}>Responses:</h2>
+					</div>
+					<div>
+						{questions.map((o, idx) => (
+							<div style={{ borderRadius: 5, overflow: 'hidden', marginBottom: 15 }}>
+								<Accordion>
+									<AccordionSummary
+										expandIcon={<ExpandMoreIcon style={{ color: colors.text }} />}
+										aria-controls="panel1a-content"
+										id="panel1a-header"
+										sx={{
+											backgroundColor: colors.background,
+										}}
+									>
+										<Typography style={{ color: colors.text, fontWeight: 'bold' }}>{`Question ${idx + 1}`}</Typography>
+									</AccordionSummary>
+									<AccordionDetails
+										sx={{
+											backgroundColor: colors.background,
+										}}
+									>
+										<div style={{ textAlign: 'left' }}>
+											<h3 style={{ color: colors.text, marginBottom: 0 }}>{o}</h3>
+											<ul>
+												{responses[idx].map((item) => (
+													<li style={{ color: colors.text }}>{item}</li>
+												))}
+											</ul>
+										</div>
+									</AccordionDetails>
+								</Accordion>
+							</div>
+						))}
+					</div>
 				</div>
 			</PartSection>
 
 			<PartSection title='Part 3'>
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text, marginBottom: 0 }}>Indecisive Ian:</h2>
-					<h4 style={{ color: colors.text, marginBottom: '40px' }}>
-						Indecisive Ian is a freshman eating at Andrews for the first time. Ian is used to the manual soda dispenser at his high school, and can’t quite decide which drink, of the many options, to choose from. To make the problem worse, the touch screen doesn’t seem to pick up his selections. Indecisive Ian is a great example of first time users interacting with the soda touch screen.
-					</h4>
-				</div>
-				<div>
-					<img src={ian} class={styles.image} />
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text, marginBottom: 0 }}>Indecisive Ian:</h2>
+						<h4 style={{ color: colors.text, marginBottom: '40px' }}>
+							Indecisive Ian is a freshman eating at Andrews for the first time. Ian is used to the manual soda dispenser at his high school, and can’t quite decide which drink, of the many options, to choose from. To make the problem worse, the touch screen doesn’t seem to pick up his selections. Indecisive Ian is a great example of first time users interacting with the soda touch screen.
+						</h4>
+					</div>
+					<div>
+						<img src={ian} class={styles.image} />
+					</div>
 				</div>
 
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text, marginBottom: 0 }}>Hungry Harry:</h2>
-					<h4 style={{ color: colors.text, marginBottom: '40px' }}>
-						Hungry Harry is a senior who is still on the meal plan. Having eaten at Andrews for three years, Harry knows how the dispenser works. He does not want to spend time looking through the options, Harry simply wants to grab a drink and start eating. Hungry Harry is a good example of a seasoned user who is in a rush and does want to explore all that the interface has to offer.
-					</h4>
-				</div>
-				<div>
-					<img src={harry} class={styles.image} />
+				<div class={styles.section} style={{ backgroundColor: colors.secondary }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text, marginBottom: 0 }}>Hungry Harry:</h2>
+						<h4 style={{ color: colors.text, marginBottom: '40px' }}>
+							Hungry Harry is a senior who is still on the meal plan. Having eaten at Andrews for three years, Harry knows how the dispenser works. He does not want to spend time looking through the options, Harry simply wants to grab a drink and start eating. Hungry Harry is a good example of a seasoned user who is in a rush and does want to explore all that the interface has to offer.
+						</h4>
+					</div>
+					<div>
+						<img src={harry} class={styles.image} />
+					</div>
 				</div>
 			</PartSection>
 
 			<PartSection title='Part 4'>
-				<div id={styles.titleWrapper}>
-					<h2 style={{ color: colors.text, marginBottom: 0 }}>Storyboard:</h2>
-				</div>
-				<div style={{ marginTop: 30, height: 'auto', width: '100%' }}>
-					<Carousel
-						autoPlay={false}
-						navButtonsAlwaysVisible={true}
-						navButtonsProps={{          // Change the colors and radius of the actual buttons. THIS STYLES BOTH BUTTONS
-							style: {
-								backgroundColor: colors.main,
-							}
-						}}
-						activeIndicatorIconButtonProps={{
-							style: {
-								color: colors.main       // 3
-							}
-						}}
-					>
+				<div class={styles.section} style={{ backgroundColor: colors.secondary, height: 'auto', width: '100%' }}>
+					<div id={styles.titleWrapper}>
+						<h2 style={{ color: colors.text, marginBottom: 0 }}>Storyboard:</h2>
+					</div>
+					<div style={{ marginTop: 30, height: 'auto', width: '100%' }}>
+						{/* <ImageList sx={{ width: 500, height: 450 }}>
+							{itemData.map((item, idx) => (
+								<ImageListItem key={item.img}>
+									<img
+										src={storyboards[idx]}
+										// srcSet={`${item.img}?w=248&fit=crop&auto=format&dpr=2 2x`}
+										alt={item.title}
+										loading="lazy"
+									/>
+									<ImageListItemBar
+										subtitle={<span>by: {item}</span>}
+										position="below"
+									/>
+								</ImageListItem>
+							))}
+						</ImageList> */}
+						<Carousel
+							animation='slide'
+							autoPlay={false}
+							navButtonsAlwaysVisible={true}
+							navButtonsProps={{
+								style: {
+									backgroundColor: colors.main,
+								}
+							}}
+							activeIndicatorIconButtonProps={{
+								style: {
+									color: colors.main
+								}
+							}}
+						>
 
-						{storyboards.map((i) => (
-							<img src={i} class={styles.image} />
-						))}
-					</Carousel>
+							{storyboards.map((i) => (
+								<img src={i} class={styles.image} />
+							))}
+						</Carousel>
+					</div>
 				</div>
 			</PartSection>
 		</div>
