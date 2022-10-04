@@ -115,8 +115,17 @@ export default function Personas() {
 		SB1, SB2, SB3, SB4, SB5, SB6, SB7, SB8, SB9, SB10
 	]
 
-	const itemData = [
-		'caption'
+	const captions = [
+		"Indecisive Ian approaches the drink machine in Andrews. He does not appear to have any drink in mind before interacting with the machine.",
+		"Ian now takes his first glance at the drink options and tries to decide which ‘style’ of drink he is feeling for dinner tonight.",
+		"After a quick once over, Ian begins looking for the Root Beer option. However, he is a bit confused by the many options and disorganized layout.",
+		"Ian is finally able to track down the Root Beer option. To his surprise, he can’t seem to select the drink!",
+		"After some quick hypothesizing, Ian realizes that the gray background around the drink likely means that it is sold out!",
+		"At this point, Indecisive Ian is beginning to worry…he is holding up a line of hungry students after all.",
+		"In a rush to make a decision, Ian quickly settles on Aha (his favorite drink from Brown quarantine semester)",
+		"To his surprise, Ian discovers that there are more flavors to choose from after selecting a drink!",
+		"Frustratingly, Ian can’t seem to select the lime watermelon flavor, as the touch screen wont recognize his presses…",
+		"After walking away with his drink, Indecisive Ian wishes he had more time to explore the different flavors and choose a better drink option.",
 	]
 
 	return (
@@ -272,7 +281,7 @@ export default function Personas() {
 			<PartSection title='Part 4'>
 				<div class={styles.section} style={{ backgroundColor: colors.secondary, height: 'auto', width: '100%' }}>
 					<div id={styles.titleWrapper}>
-						<h2 style={{ color: colors.text, marginBottom: 0 }}>Storyboard:</h2>
+						<h2 style={{ color: colors.text, marginBottom: 0 }}>Storyboard: Indecisive Ian</h2>
 					</div>
 					<div style={{ marginTop: 30, height: 'auto', width: '100%' }}>
 						{/* <ImageList sx={{ width: 500, height: 450 }}>
@@ -307,8 +316,13 @@ export default function Personas() {
 							}}
 						>
 
-							{storyboards.map((i) => (
-								<img src={i} class={styles.image} />
+							{storyboards.map((i, idx) => (
+								<div style={{ justifyContent: 'center', display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: 15 }}>
+									<img src={i} class={styles.image} />
+									<div style={{ width: '50%' }}>
+										<h4 style={{ color: colors.text, }}>{captions[idx]}</h4>
+									</div>
+								</div>
 							))}
 						</Carousel>
 					</div>
